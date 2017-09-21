@@ -24,41 +24,8 @@ gation -->
         </nav><!--hết menu-->
     </div>
     <div class="row" id="homePage">
-        <div class="col-3 ">
-            <form class="form-signin">
-                <label for="inputsearch" class="sr-only">Input words</label>
-                <br />
-                <select class="form-control">
-                    <option>--- Select type words ---</option>
-                </select>
-                <br />
-                <select class="form-control" name="number">
-                    <option value="0">--- Select number words ---</option>
-                    <?php
-                    for($i=1;$i<=50;$i++){
-                        echo '<option value="'.$i.'">--- '.$i.' ---</option>';
-                    }
-                    ?>
-                </select>
-                <br />
-                <input type="text" id="inputsearch" class="form-control" placeholder="Words" required autofocus>
-                <br />
-                <button class="btn btn-md btn-primary btn-block" type="submit">Learn</button>
-                <br />
-            </form>
-                <b style="color: white;"><a class="btn btn-md btn-primary btn-block" href="add.php">Add words</a></b>
-                 <br />
-                 <b style="color: white;"><a class="btn btn-md btn-primary btn-block">Changes Meaning</a></b>
-            <br />
-            <b style="color: white;"><a class="btn btn-md btn-primary btn-block">Delete words</a></b>
-        </div>
-        <form action="" class="col-9">
+        <form action="" class="col-12">
             <div class="col-12">
-
-                <br />
-                <div class="col-3">
-                    <td><button class="btn btn-md btn-primary btn-block" type="submit">Test</button></td>
-                </div>
                 <br />
                 <table class="table table-inverse">
                     <thead>
@@ -66,7 +33,7 @@ gation -->
                         <th>Number</th>
                         <th>Words</th>
                         <th>Meaning</th>
-                        <th>Type</th>
+                        <th>Description</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -74,23 +41,29 @@ gation -->
                         <th scope="row">1</th>
                         <td>Mark</td>
                         <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
-                        <td><button class="btn btn-md btn-primary btn-block" type="submit">Test</button></td>
+                        <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
 
                     </tr>
                     <tr>
                         <th scope="row">2</th>
                         <td>Jacob</td>
                         <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
-                        <td><button class="btn btn-md btn-primary btn-block" type="submit">Test</button></td>
+                        <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
                     </tr>
                     <tr>
                         <th scope="row">3</th>
                         <td>Larry</td>
                         <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
-                        <td><button class="btn btn-md btn-primary btn-block" type="submit">Test</button></td>
+                        <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
                     </tr>
                     </tbody>
                 </table>
+                <div class="row">
+                    <div class="col-5"></div>
+                    <button class="btn btn-md btn-primary btn-block col-2 justify-content-center" type="submit">Add</button>
+                    <div class="col-5"></div>
+                </div>
+
             </div>
         </form>
 
