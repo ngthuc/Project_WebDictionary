@@ -1,6 +1,3 @@
-<?php
-require_once 'DictionaryMod.php';
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +5,7 @@ require_once 'DictionaryMod.php';
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Minh Luan Dictionary</title>
+    <title>Thunder Dragon</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/minhluancss.css">
     <link rel="icon" href="image/Other-mirillis-icon.png">
@@ -35,30 +32,13 @@ gation -->
                     <tr>
                         <th>Number</th>
                         <th>Words</th>
-                        <th>Types</th>
                         <th>Meaning</th>
                         <th>Description</th>
-                        <th>Lesson</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    $wordO = new DictionaryObj();
-                    $wordM = new DictionaryMod();
-                    echo '
-                    ?>
                     <tr>
                         <th scope="row">1</th>
-                        <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
-                        <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
-                        <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
-                        <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
-
-                    </tr>';
-                    ?>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
                         <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
                         <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
                         <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>

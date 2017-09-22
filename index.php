@@ -1,3 +1,8 @@
+<?php
+    require_once 'DictionaryMod.php';
+        $dicO = new DictionaryObj();
+        $dicM = new DictionaryMod();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,16 +29,34 @@ gation -->
         </nav><!--hết menu-->
     </div>
     <div class="row" id="homePage">
-        <div class="col-3 ">
-            <form class="form-signin">
+        <div class="col-2 ">
+            <form class="form-signin" method="get" action="index.php">
                 <label for="inputsearch" class="sr-only">Input words</label>
                 <br />
-                <select class="form-control">
-                    <option>--- Select type words ---</option>
+                <select class="form-control" name="types">
+                    <option value="NoType">--- Select type words ---</option>
+                    <?php
+                    $listTypes = $dicM->getTypes();
+                    foreach ($listTypes as $key => $value){
+                        echo'
+                    <option value="'.$value.'">'.$value.'</option>';
+                    }
+                    ?>
+                </select>
+                <br />
+                <select class="form-control" name="lesson">
+                    <option value="NoLesson">--- Select lesson words ---</option>
+                    <?php
+                    $listLesson = $dicM->getLesson();
+                    foreach ($listLesson as $key => $value){
+                        echo'
+                    <option>'.$value.'</option>';
+                    }
+                    ?>
                 </select>
                 <br />
                 <select class="form-control" name="number">
-                    <option value="0">--- Select number words ---</option>
+                    <option value="NoNumber">--- Select number words ---</option>
                     <?php
                     for($i=1;$i<=50;$i++){
                         echo '<option value="'.$i.'">--- '.$i.' ---</option>';
@@ -41,23 +64,35 @@ gation -->
                     ?>
                 </select>
                 <br />
-                <input type="text" id="inputsearch" class="form-control" placeholder="Words" required autofocus>
+                <button class="btn btn-md btn-primary btn-block" name="learn">Learn</button>
                 <br />
-                <button class="btn btn-md btn-primary btn-block" type="submit">Learn</button>
+                <b><a class="btn btn-md btn-primary btn-block" href="add.php">Add words</a></b>
+                <br />
+                <b><a class="btn btn-md btn-primary btn-block" href="add.php">Update words</a></b>
+                <br />
+                <b><a class="btn btn-md btn-primary btn-block" href="add.php">Delete words</a></b>
                 <br />
             </form>
-                <b style="color: white;"><a class="btn btn-md btn-primary btn-block" href="add.php">Add words</a></b>
-                 <br />
-                 <b style="color: white;"><a class="btn btn-md btn-primary btn-block">Changes Meaning</a></b>
-            <br />
-            <b style="color: white;"><a class="btn btn-md btn-primary btn-block">Delete words</a></b>
         </div>
-        <form action="" class="col-9">
+        <?php
+        echo '
+        <form action="" class="col-10">
             <div class="col-12">
 
                 <br />
+                <div class="row">
                 <div class="col-3">
-                    <td><button class="btn btn-md btn-primary btn-block" type="submit">Test</button></td>
+                     <td><button class="btn btn-md btn-primary btn-block" type="submit">Test</button></td>
+                </div>
+                <div class="col-6">
+                <input type="text" id="inputsearch" class="form-control" placeholder="Words" required autofocus name="words">
+                </div>
+                <br />
+                <div class="col-3">
+                <button class="btn btn-md btn-primary btn-block" name="learn">Find</button>
+                </div>
+                    
+                <br />
                 </div>
                 <br />
                 <table class="table table-inverse">
@@ -65,34 +100,35 @@ gation -->
                     <tr>
                         <th>Number</th>
                         <th>Words</th>
+                        <th>Types</th>
                         <th>Meaning</th>
-                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Lesson</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
+                    <tr>';
+                    if(isset($_GET['learn'])){
+                        $list=$dicM->getOnRequi($_GET['types'],$_GET['lesson'],$_GET['number']);
+                      foreach ($list as $key =>$value)
+                          echo'
+                        <th scope="row">'.($key+1).'</th>
+                        <td>'.$value->getWord().'</td>
+                        <td ><input type="text" id="" class="form-control" style="width: 100px;" placeholder="Type Input" required autofocus></td>
                         <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
-                        <td><button class="btn btn-md btn-primary btn-block" type="submit">Test</button></td>
+                        <td>'.$value->getDescription().'</td>
+                        <td>'.$value->getLesson().'</td>
+                        <td><button class="btn btn-md btn-primary btn-block" type="submit">Test</button></td>';
+                      }
 
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
-                        <td><button class="btn btn-md btn-primary btn-block" type="submit">Test</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
-                        <td><button class="btn btn-md btn-primary btn-block" type="submit">Test</button></td>
-                    </tr>
-                    </tbody>
+                    echo '
+                </tr>
+                </tbody>
                 </table>
             </div>
-        </form>
+        </form>';
+        ?>
+
 
     </div>
 <footer class="card-footer" id="footerPage">
