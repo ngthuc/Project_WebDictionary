@@ -265,19 +265,15 @@ class DictionaryMod
         // Nếu lớn hơn tức là có kết quả, ngược lại sẽ không có kết quả
         if ($result->num_rows > 0) {
             // Sử dụng vòng lặp while để lặp kết quả
-            $k = 0;
-            //Tạo một đối tượng chứa
-            $words = new DictionaryObj();
             while ($row = $result->fetch_assoc()) {
-
+                //Tạo một đối tượng chứa
+                $words = new DictionaryObj();
                 //Cho vào list đối tượng
                 $words->setWord($row['word']);
                 $words->setTypes($row['types']);
                 $words->setMeaning($row['meaning']);
                 $words->setDescription($row['description']);
                 $words->setLesson($row['lesson']);
-                $list[$k] = $words;
-                $k++;
             }
         } else {
             // echo "Không có kết quả nào";
@@ -285,7 +281,7 @@ class DictionaryMod
         //Ngắt kết nối
         $this->conn->Stop();
         //Trả đối tượng đi, sau này lớp control sẽ sử dụng mảng này để truy xuất
-        return $list;
+        return $word;
     }
     //Hàm tìm kiếm một chi hội theo ý nghĩa
 
@@ -293,7 +289,7 @@ class DictionaryMod
     public function addWord($word)
     {
         // Đẩy câu lệnh vào string
-        $sql = "INSERT INTO Dictionary(word,types, meaning,description,lesson) VALUES('". $word->getWord() ."','".$word->getMeaning() ."','".$word->getDescription()."','".$word->getLesson() ."');";
+        $sql = "INSERT INTO Dictionary(word,types, meaning,description,lesson) VALUES('". $word->getWord() ."','".$word->getTypes() ."','".$word->getMeaning() ."','".$word->getDescription()."','".$word->getLesson() ."');";
         // Thực thi câu lệnh
         $this->conn->Connect();
         if ($this->conn->conn->multi_query($sql) === true) {

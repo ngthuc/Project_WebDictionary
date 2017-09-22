@@ -68,9 +68,10 @@ class DictionaryObj
     }
 
     //Nhận dữ liệu cho tất cả các trường của tu
-    public function setDictionary($word, $meaning,$description,$lesson)
+    public function setDictionary($word,$types, $meaning,$description,$lesson)
     {
        $this->setWord($word);
+        $this->types = $types;
        $this->setMeaning($meaning);
        $this->setDescription($description);
        $this->setLesson($lesson);

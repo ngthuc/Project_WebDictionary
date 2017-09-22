@@ -76,8 +76,8 @@ gation -->
         </div>
         <?php
         echo '
-        <form action="" class="col-10">
-            <div class="col-12">
+        
+            <div class="col-10">
 
                 <br />
                 <div class="row">
@@ -85,13 +85,13 @@ gation -->
                      <td><button class="btn btn-md btn-primary btn-block" type="submit">Test</button></td>
                 </div>
                 <div class="col-6">
-                <input type="text" id="inputsearch" class="form-control" placeholder="Words" required autofocus name="words">
+                <input type="text" id="inputsearch" class="form-control" placeholder="Search word" required autofocus name="words">
                 </div>
                 <br />
                 <div class="col-3">
-                <button class="btn btn-md btn-primary btn-block" name="learn">Find</button>
+                <button class="btn btn-md btn-primary btn-block" name="find">Find</button>
                 </div>
-                    
+                <form action="" class="col-10">  
                 <br />
                 </div>
                 <br />
@@ -107,26 +107,29 @@ gation -->
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>';
+                    ';
                     if(isset($_GET['learn'])){
                         $list=$dicM->getOnRequi($_GET['types'],$_GET['lesson'],$_GET['number']);
                       foreach ($list as $key =>$value)
                           echo'
+                        <tr>
                         <th scope="row">'.($key+1).'</th>
                         <td>'.$value->getWord().'</td>
                         <td ><input type="text" id="" class="form-control" style="width: 100px;" placeholder="Type Input" required autofocus></td>
                         <td><input type="text" id="" class="form-control" placeholder="Meaning Input" required autofocus></td>
                         <td>'.$value->getDescription().'</td>
                         <td>'.$value->getLesson().'</td>
-                        <td><button class="btn btn-md btn-primary btn-block" type="submit">Test</button></td>';
+                        <td><a class="btn btn-md btn-primary btn-block" href="index.php?id='.$value->getWord().'">Test</a></td>
+                        </tr>
+                        ';
                       }
 
                     echo '
-                </tr>
                 </tbody>
                 </table>
             </div>
         </form>';
+        require_once 'information.php';
         ?>
 
 
