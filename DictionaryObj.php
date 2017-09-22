@@ -42,7 +42,7 @@ class DictionaryObj
     //Trả ra dữ liệu kiểu chuỗi y nghia 1 tu
     public function getMeaning()
     {
-        return $this->Meaning;
+        return $this->meaning;
     }
     //Thêm một dữ liệu kiểu chuỗi mot ta
     public function setDescription($des)

@@ -5,7 +5,13 @@ $wordM = new DictionaryMod();
 ?>
 <?php
 if(isset($_GET['add'])){
-    for($i=1;$i<=$go;$i++) {
+
+    $k=0;
+    while(isset($_GET['word'.($k+1)])) {
+        $k++;
+    }
+    if($k>=1)
+    for($i=1;$i<=$k;$i++) {
         $wordO->setDictionary($_GET['word'.$i],$_GET['types'.$i], $_GET['meaning'.$i],$_GET['description'.$i],$_GET['lesson'.$i]);
         $wordM->addWord($wordO);
     }}
@@ -84,8 +90,10 @@ gation -->
                         <td><input type="text" name="lesson'.$i.'" class="form-control" placeholder="Lesson Input" required autofocus></td>
                     </tr> ';
                         }
-                        echo'
-                        </table>
+                    }
+                    ?>
+                    </tbody>
+                </table>
                 <div class="row">
                     <div class="col-5"></div>
                     <button class="btn btn-md btn-primary btn-block col-2 justify-content-center" name="add">Add</button>
@@ -93,12 +101,7 @@ gation -->
                     <div class="col-12">
                         <br />
                     </div>
-                </div>';
-                    }
-                    ?>
-                    </tbody>
-
-
+                </div>
             </div>
         </form>
 
