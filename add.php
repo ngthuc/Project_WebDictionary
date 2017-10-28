@@ -12,7 +12,7 @@ if(isset($_GET['add'])){
     }
     if($k>=1)
     for($i=1;$i<=$k;$i++) {
-        $wordO->setDictionary($_GET['word'.$i],$_GET['types'.$i], $_GET['meaning'.$i],$_GET['description'.$i],$_GET['lesson'.$i]);
+        $wordO->setDictionary($_GET['word'.$i],$_GET['types'.$i], $_GET['meaning'.$i],$_GET['description'.$i],$_GET['lesson']);
         $wordM->addWord($wordO);
     }}
 ?>
@@ -64,6 +64,7 @@ gation -->
         <form action="" class="col-12">
             <div class="col-12 align-content-start">
                 <br />
+                <input type="text" name="lesson" class="form-control" placeholder="Lesson Input" required autofocus>
                 <table class="table table-inverse">
                     <thead>
                     <tr>
@@ -72,7 +73,6 @@ gation -->
                         <th>Types</th>
                         <th>Meaning</th>
                         <th>Description</th>
-                        <th>Lesson</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -86,8 +86,7 @@ gation -->
                         <td><input type="text" name="word'.$i.'" class="form-control" placeholder="Word Input" required autofocus></td>
                         <td><input type="text" name="types'.$i.'" class="form-control" placeholder="Type Input" required autofocus></td>
                         <td><input type="text" name="meaning'.$i.'" class="form-control" placeholder="Meaning Input" required autofocus></td>
-                        <td><input type="text" name="description'.$i.'" class="form-control" placeholder="Description Input" required autofocus></td>
-                        <td><input type="text" name="lesson'.$i.'" class="form-control" placeholder="Lesson Input" required autofocus></td>
+                        <td><input type="text" name="description'.$i.'" class="form-control" placeholder="Description Input"  autofocus value="null"></td>
                     </tr> ';
                         }
                     }
